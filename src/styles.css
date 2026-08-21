@@ -1,0 +1,89 @@
+/* Basic styling for boot + desktop environment */
+:root{
+  --bg: linear-gradient(180deg,#0f1320,#0b0c10);
+  --accent: #4fc3f7;
+  --panel: rgba(18,18,20,0.85);
+  --window-bg: #111215;
+  --text: #e6eef6;
+  --muted: #9aa6b2;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  user-select: none;
+}
+
+html,body,#desktop{
+  width:100%;height:100%;margin:0;padding:0;overflow:hidden;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.hidden{display:none;}
+
+.boot-screen{
+  width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;
+  background:linear-gradient(180deg,#0b1220,#00121a);
+  color:var(--text);
+}
+.boot-logo{
+  font-size:36px;font-weight:700;letter-spacing:2px;
+}
+.boot-sub{opacity:0.8;color:var(--muted);}
+
+/* Desktop icons area */
+.icons{
+  position:absolute;inset:0;padding:20px;display:flex;flex-wrap:wrap;align-content:flex-start;gap:18px;
+}
+
+/* Icon */
+.icon{
+  width:72px;text-align:center;font-size:12px;color:var(--text);cursor:default;
+}
+.icon .thumb{
+  width:64px;height:64px;background:rgba(255,255,255,0.06);border-radius:8px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;
+}
+
+/* Windows container */
+.windows{position:absolute;inset:0;pointer-events:none;}
+
+/* App window */
+.app-window{
+  position:absolute;top:120px;left:120px;width:560px;height:360px;background:var(--window-bg);border-radius:6px;
+  box-shadow:0 12px 30px rgba(2,6,16,0.7);overflow:hidden;border:1px solid rgba(255,255,255,0.04);
+  pointer-events:auto;
+  display:flex;flex-direction:column;
+}
+.app-window .titlebar{
+  height:36px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);display:flex;align-items:center;padding:0 8px;gap:8px;
+  cursor:grab;
+}
+.app-window .title{flex:1;font-weight:600;font-size:13px}
+.app-window .controls button{background:none;border:0;color:var(--muted);padding:6px 8px;border-radius:4px;cursor:pointer}
+.app-window .content{flex:1;padding:12px;overflow:auto;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
+
+/* Resizer */
+.resizer{position:absolute;width:12px;height:12px;right:0;bottom:0;cursor:se-resize;background:transparent}
+
+/* Taskbar */
+.taskbar{
+  position:fixed;left:0;right:0;bottom:0;height:44px;background:var(--panel);display:flex;align-items:center;padding:6px 12px;gap:8px;
+  border-top:1px solid rgba(255,255,255,0.03);
+}
+.start-button{min-width:42px;height:32px;border-radius:6px;border:0;background:transparent;color:var(--text);cursor:pointer}
+.taskbar-apps{display:flex;gap:6px;flex:1;align-items:center}
+.taskbar-app{
+  background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:6px;color:var(--text);cursor:pointer
+}
+.taskbar-clock{color:var(--muted);font-size:13px}
+
+/* Start menu */
+.start-menu{
+  position:fixed;left:12px;bottom:56px;width:280px;background:var(--panel);border-radius:8px;padding:12px;box-shadow:0 12px 30px rgba(0,0,0,0.6);
+}
+.start-menu h4{margin:0 0 8px 0;color:var(--muted);font-size:13px}
+.start-menu ul{list-style:none;padding:0;margin:0}
+.start-menu li{padding:8px;border-radius:6px;cursor:pointer;color:var(--text)}
+.start-menu li:hover{background:rgba(255,255,255,0.02)}
+
+/* Simple scrollbar */
+::-webkit-scrollbar{height:8px;width:8px}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.06);border-radius:8px}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GOKU OS 2.0</title>
+  <link rel="stylesheet" href="./src/styles.css" />
+</head>
+<body>
+  <!-- Boot screen -->
+  <div id="boot" class="boot-screen">
+    <div class="boot-logo">GOKU OS 2.0</div>
+    <div class="boot-sub">Starting...</div>
+  </div>
+
+  <!-- Desktop -->
+  <div id="desktop" class="desktop hidden">
+    <div id="windows" class="windows"></div>
+    <div id="icons" class="icons"></div>
+
+    <!-- Taskbar -->
+    <div id="taskbar" class="taskbar">
+      <button id="start-button" class="start-button">☰</button>
+      <div id="taskbar-apps" class="taskbar-apps"></div>
+      <div class="taskbar-clock" id="clock">--:--</div>
+    </div>
+
+    <!-- Start Menu -->
+    <div id="start-menu" class="start-menu hidden">
+      <div class="start-section">
+        <h4>Apps</h4>
+        <ul id="start-app-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./src/renderer.js"></script>
+</body>
+</html>

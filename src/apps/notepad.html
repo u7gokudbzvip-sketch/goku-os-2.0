@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Notepad</title>
+  <style>
+    :root{color-scheme:dark}
+    body{margin:0;font-family:Inter, Arial;background:transparent;color:#e6eef6}
+    .toolbar{display:flex;gap:8px;padding:8px;border-bottom:1px solid rgba(255,255,255,0.03)}
+    textarea{width:100%;height:calc(100vh - 56px);background:transparent;border:0;color:inherit;padding:12px;resize:none;font-family:monospace;font-size:14px}
+    button{padding:6px 10px;border-radius:6px;border:0;background:rgba(255,255,255,0.04);color:inherit;cursor:pointer}
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <button id="btn-save">Save</button>
+    <button id="btn-clear">Clear</button>
+  </div>
+  <textarea id="txt" placeholder="Write something..."></textarea>
+
+  <script>
+    const txt = document.getElementById('txt');
+    document.getElementById('btn-clear').addEventListener('click', ()=> txt.value='');
+    document.getElementById('btn-save').addEventListener('click', async ()=> {
+      // For now save to settings as demo
+      try {
+        const current = await window.goku.getSettings();
+        current.lastNotepad = txt.value;
+        await window.goku.setSettings(current);
+        alert('Saved to settings (demo)');
+      } catch (e) {
+        alert('Save failed: ' + e);
+      }
+    });
+
+    // restore last content if available
+    (async ()=> {
+      try {
+        const s = await window.goku.getSettings();
+        if (s && s.lastNotepad) txt.value = s.lastNotepad;
+      } catch (e) {}
+    })();
+  </script>
+</body>
+</html>
