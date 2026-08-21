@@ -1,0 +1,15 @@
+{
+  "name": "goku-os-2.0",
+  "version": "0.1.0",
+  "description": "GOKU OS 2.0 - Desktop OS simulator (Electron + HTML/CSS/JS)",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron ."
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^26.0.0"
+  }
+}
