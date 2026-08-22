@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>File Manager - GOKU OS 2.0</title>
+  <link rel="stylesheet" href="./file-manager.css" />
+</head>
+<body class="fm-root">
+  <div class="fm-header">
+    <div class="fm-nav">
+      <button id="btn-back" title="Back">◀</button>
+      <button id="btn-forward" title="Forward">▶</button>
+      <button id="btn-up" title="Parent">⬆</button>
+      <input id="fm-search" placeholder="Search..." />
+      <div class="fm-actions">
+        <button id="btn-new-folder">New Folder</button>
+        <button id="btn-new-file">New File</button>
+      </div>
+    </div>
+  </div>
+  <div class="fm-body">
+    <div class="fm-sidebar">
+      <ul id="fm-shortcuts">
+        <li data-name="Home">Home</li>
+        <li data-name="Desktop">Desktop</li>
+        <li data-name="Documents">Documents</li>
+        <li data-name="Downloads">Downloads</li>
+        <li data-name="Pictures">Pictures</li>
+        <li data-name="Music">Music</li>
+        <li data-name="Videos">Videos</li>
+        <li data-name="Trash">Trash</li>
+      </ul>
+    </div>
+    <div class="fm-main">
+      <div id="fm-path" class="fm-path">/</div>
+      <div id="fm-list" class="fm-list"></div>
+    </div>
+  </div>
+  <div id="fm-context" class="fm-context hidden"></div>
+  <script type="module" src="./file-manager.js"></script>
+</body>
+</html>

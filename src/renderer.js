@@ -30,6 +30,14 @@ async function bootSequence() {
     console.warn('Could not load settings', e);
   }
 
+  // ensure VFS is ready before initializing desktop
+  try {
+    await window.goku.vfs.ensureReady();
+    console.log('VFS ensured from renderer');
+  } catch (e) {
+    console.warn('VFS ensure failed', e);
+  }
+
   desktop.init();
   // optional: open a welcome window
   desktop.openWelcome();

@@ -1,9 +1,12 @@
-// Electron main process
+// Register VFS and initialize in the main process
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const fs = require('fs').promises;
 
 let mainWindow;
+
+// require vfs backend
+const vfsModule = require('./src/backend/vfs');
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -63,7 +66,21 @@ ipcMain.handle('settings:set', async (_, data) => {
   return await writeSettings(data);
 });
 
-app.whenReady().then(createWindow);
+let vfsInstance = null;
+
+app.whenReady().then(async () => {
+  // init VFS module with ipcMain and app
+  vfsInstance = vfsModule.init(app, ipcMain);
+  // ensure default folders exist before showing desktop
+  try {
+    await vfsInstance.ensureReady();
+    console.log('VFS ready');
+  } catch (e) {
+    console.warn('VFS initialization failed', e);
+  }
+
+  createWindow();
+});
 
 app.on('window-all-closed', () => {
   // On macOS keep app alive until user quits explicitly

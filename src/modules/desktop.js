@@ -1,3 +1,4 @@
+// Add File Manager to Desktop apps
 // Desktop module: icons, start menu, basic app launching
 export default class Desktop {
   constructor(opts) {
@@ -9,6 +10,7 @@ export default class Desktop {
     this.wm = opts.windowManager;
     this.apps = [
       { id: 'notepad', name: 'Notepad', url: './src/apps/notepad.html' },
+      { id: 'file-manager', name: 'File Manager', url: './src/apps/file-manager.html' },
       // future apps will be listed here
     ];
   }
@@ -106,7 +108,7 @@ export default class Desktop {
   openWelcome() {
     const content = `<div style="padding:12px">
       <h2>Welcome to GOKU OS 2.0</h2>
-      <p>Double-click the Notepad icon to try the first app.</p>
+      <p>Double-click the Notepad or File Manager icons to try the apps.</p>
     </div>`;
     this.wm.createWindow({ title: 'Welcome', contentHTML: content, width:480, height:220, x:200, y:160 });
   }
